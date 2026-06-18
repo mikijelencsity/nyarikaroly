@@ -182,8 +182,9 @@
   .ch:first-child{border-top:none}
   .ch-ico{width:52px;height:52px;border-radius:50%;background:rgba(138,90,50,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent)}
   .ch-ico svg{width:23px;height:23px}
+  .ch>div{min-width:0}
   .ch-label{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;color:var(--m2);margin-bottom:4px;font-weight:600}
-  .ch a,.ch span{color:var(--txt-d);text-decoration:none;font-size:1.3rem;font-weight:700}
+  .ch a,.ch span{color:var(--txt-d);text-decoration:none;font-size:1.3rem;font-weight:700;word-break:break-word;overflow-wrap:anywhere}
   .ch a:hover{color:var(--accent)}
   form{background:var(--bg);padding:32px;border-radius:10px;border:1px solid var(--line);height:100%;display:flex;flex-direction:column}
   .field{margin-bottom:18px}
@@ -230,10 +231,9 @@
     .cta-strip-inner{gap:18px}
     .cta-strip .ring{width:64px;height:64px}
     .cta-strip .ring svg{width:24px;height:24px}
-    .call-fab{padding:10px;gap:0;bottom:18px;right:18px}
-    .call-fab .fab-text{display:none}
-    .call-fab .fab-icon{width:40px;height:40px}
-    .call-fab svg{width:19px;height:19px}
+    .call-fab{padding:8px 16px 8px 8px;gap:9px;bottom:16px;right:16px;font-size:.85rem}
+    .call-fab .fab-icon{width:32px;height:32px}
+    .call-fab svg{width:16px;height:16px}
   }
 
   @media(max-width:600px){
