@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nyári Károly Kőműves — Győr és környéke</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,sans-serif;background:#ede8e0;color:#2b2520;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+  :root{
+    --bg:#ede8e0; --bg2:#e3ddd0; --bg3:#d8d0bd;
+    --txt:#2b2520; --txt-d:#1a1612;
+    --m1:#5a4f44; --m2:#7a6d5e; --m3:#9a8b78;
+    --line:#d4cbb8; --line2:#c4b9a0;
+    --accent:#8a5a32; --dark:#1f1a14;
+  }
+
+  h1,h2,h3{letter-spacing:-.025em;color:var(--txt-d)}
+  h2{font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:700;line-height:1.1}
+  h3{font-weight:600}
+  a{color:inherit}
+
+  /* NAV */
+  nav{position:sticky;top:0;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+  .logo{font-weight:700;font-size:1.05rem;text-decoration:none;color:var(--txt-d)}
+  .logo span{color:var(--m3);font-weight:500}
+  .nav-center{display:flex;align-items:center;gap:32px}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{color:var(--m1);text-decoration:none;font-size:.9rem;font-weight:500}
+  .nav-links a:hover{color:var(--txt-d)}
+  .loc{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--m2)}
+  .loc svg{width:12px;height:12px}
+  .nav-cta{padding:9px 18px;background:var(--txt-d);color:var(--bg);border-radius:2px;text-decoration:none;font-size:.86rem;font-weight:500}
+  .nav-cta:hover{background:var(--m1)}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+  .menu-btn span{width:22px;height:1.5px;background:var(--txt-d)}
+
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1fr 1fr;min-height:640px}
+  .hero-img{background-image:url('images/1000033871.webp');background-size:cover;background-position:center;position:relative}
+  .hero-img::after{content:"";position:absolute;top:0;bottom:0;right:-1px;width:140px;background:linear-gradient(90deg,transparent,var(--bg))}
+  .hero-text{display:flex;flex-direction:column;justify-content:center;padding:80px 6%;background-color:var(--bg);background-image:repeating-linear-gradient(0deg,rgba(90,79,68,.06) 0 3px,transparent 3px 30px),repeating-linear-gradient(90deg,rgba(90,79,68,.04) 0 3px,transparent 3px 62px)}
+  .label{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--m2);margin-bottom:24px;font-weight:600}
+  h1{font-size:clamp(2.4rem,4.8vw,4rem);font-weight:700;line-height:1.05;margin-bottom:28px;letter-spacing:-.035em}
+  .lead{font-size:1.08rem;color:var(--m1);margin-bottom:32px;max-width:520px}
+  .cta-group{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:28px}
+  .btn{padding:15px 28px;text-decoration:none;font-weight:600;font-size:.95rem;border-radius:2px;border:none;cursor:pointer;font-family:inherit;display:inline-block}
+  .btn-primary{background:var(--txt-d);color:var(--bg)}
+  .btn-primary:hover{background:var(--m1)}
+  .btn-secondary{color:var(--txt-d);border:1.5px solid var(--txt-d);background:transparent;padding:13.5px 26px}
+  .btn-secondary:hover{background:var(--txt-d);color:var(--bg)}
+  .last-job{padding:16px 20px;background:var(--bg2);border-left:3px solid var(--accent);font-size:.92rem;color:var(--m1);max-width:480px}
+  .last-job strong{color:var(--txt-d);font-weight:600;display:block;margin-bottom:2px;font-size:.82rem;text-transform:uppercase;letter-spacing:.1em}
+
+  /* TRUST */
+  .trust{padding:28px 6%;background:var(--bg2);border-bottom:1px solid var(--line);display:flex;justify-content:center;gap:0;flex-wrap:wrap}
+  .trust-item{display:flex;flex-direction:column;align-items:center;padding:0 36px;position:relative}
+  .trust-item:not(:last-child)::after{content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:34px;background:var(--line2)}
+  .trust-item strong{font-size:1.5rem;font-weight:800;color:var(--txt-d);letter-spacing:-.02em;line-height:1}
+  .trust-item span{font-size:.76rem;color:var(--m2);text-transform:uppercase;letter-spacing:.07em;margin-top:4px;font-weight:600}
+
+  /* CTA CSÍK */
+  .cta-strip{background:linear-gradient(120deg,#5c4530,#7a5c3a)}
+  .cta-strip-inner{max-width:1240px;margin:0 auto;padding:56px 6%;display:flex;align-items:center;justify-content:center;gap:32px}
+  .cta-strip .btn-call{display:inline-flex;align-items:center;gap:24px;text-decoration:none;color:var(--bg)}
+  .cta-strip .ring{width:84px;height:84px;border-radius:50%;background:rgba(237,232,224,.12);border:1px solid rgba(237,232,224,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+  .cta-strip .ring svg{width:30px;height:30px;position:relative;z-index:1}
+  .cta-strip .ring::before,.cta-strip .ring::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(237,232,224,.5);animation:ctaPulse 2.2s ease-out infinite}
+  .cta-strip .ring::after{animation-delay:1.1s}
+  @keyframes ctaPulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+  .cta-strip .call-label{display:block;font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1;color:var(--bg)}
+  .cta-strip .call-number{display:block;font-size:1.3rem;font-weight:500;color:#e3d4bf;margin-top:6px}
+
+  /* HÍVÓGOMB (mobil, sticky) */
+  .call-fab{display:inline-flex;align-items:center;gap:14px;position:fixed;bottom:26px;right:26px;padding:13px 26px 13px 13px;border-radius:38px;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--txt-d);box-shadow:0 10px 30px rgba(31,26,20,.2),0 0 0 1px rgba(31,26,20,.06);z-index:60;text-decoration:none;font-weight:700;font-size:1.15rem;transition:transform .15s ease,box-shadow .15s ease}
+  .call-fab:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(31,26,20,.25),0 0 0 1px rgba(31,26,20,.06)}
+  .call-fab .fab-icon{width:46px;height:46px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+  .call-fab svg{width:22px;height:22px}
+
+  /* SECTIONS */
+  section.block{padding:90px 6%}
+  .container{max-width:1240px;margin:0 auto}
+  .head{margin-bottom:56px;max-width:680px}
+  .head h2{margin-bottom:14px}
+  .head p{color:var(--m1)}
+
+  /* SZOLGÁLTATÁSOK */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .service{background:linear-gradient(165deg,#eae4d8,var(--bg2) 55%);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);border:1px solid transparent;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+  .service:hover{transform:translateY(-6px);box-shadow:0 20px 36px rgba(138,90,50,.18);border-color:rgba(138,90,50,.35)}
+  .service-img-wrap{position:relative;aspect-ratio:16/10;overflow:hidden}
+  .service-img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .service:hover .service-img{transform:scale(1.06)}
+  .service-img-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(138,90,50,0) 50%,rgba(31,26,20,.6));pointer-events:none}
+  .service-num{position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8884a,var(--accent));color:#fff;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 4px 12px rgba(31,26,20,.3)}
+  .service-body{padding:26px 28px 28px;border-top:3px solid var(--accent)}
+  .service h3{font-size:1.25rem;margin-bottom:10px}
+  .service p{color:var(--m1);font-size:.94rem;margin-bottom:20px}
+  .service ul{list-style:none;font-size:.9rem;color:var(--txt-d);font-weight:600;margin-top:auto}
+  .service ul li{padding:8px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:9px}
+  .service ul li::before{content:"";width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#c8884a,var(--accent));flex-shrink:0}
+
+  /* RÓLAM */
+  .about{background:var(--bg2);overflow:hidden;position:relative}
+  .about-grid{display:flex;gap:64px;align-items:center;position:relative}
+  .about-content{flex:1}
+  .about-content .label{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;color:var(--accent)}
+  .about-content .label::before{content:"";width:28px;height:2px;background:var(--accent)}
+  .about-content h2{margin-bottom:20px}
+  .about-content p{color:var(--m1);font-size:1rem;margin-bottom:18px;max-width:520px}
+  .about-stats{display:grid;grid-template-columns:repeat(2,auto);gap:28px;margin-top:22px;padding-top:24px;border-top:1px solid var(--line2)}
+  .about-stats div strong{display:block;font-size:1.7rem;font-weight:800;color:var(--txt-d);letter-spacing:-.02em;margin-bottom:2px}
+  .about-stats div span{font-size:.74rem;color:var(--m2);text-transform:uppercase;letter-spacing:.08em}
+  .about-photo-wrap{flex:1;position:relative}
+  .about-frame{position:absolute;top:22px;left:22px;right:-22px;bottom:-22px;border:2px solid var(--accent);border-radius:4px;z-index:0}
+  .about-photo{position:relative;width:100%;aspect-ratio:4/3;border-radius:4px;box-shadow:0 28px 56px rgba(31,26,20,.32);background:var(--bg3) center/cover;filter:saturate(.9) contrast(1.05);z-index:1}
+
+  /* REFERENCIÁK */
+  .refs{background-color:var(--dark);padding-bottom:90px;position:relative;overflow:hidden;background-image:linear-gradient(rgba(31,26,20,.55),rgba(31,26,20,.7)),repeating-linear-gradient(0deg,rgba(237,232,224,.05) 0 2px,transparent 2px 28px),repeating-linear-gradient(90deg,rgba(237,232,224,.045) 0 2px,transparent 2px 58px)}
+  .refs .head,.refs .marquee-row{position:relative;z-index:1}
+  .refs .head h2{color:var(--bg)}
+  .marquee-bleed{width:100vw;position:relative;left:50%;transform:translateX(-50%)}
+  .marquee-row{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);margin-bottom:16px}
+  .marquee-track{display:flex;width:max-content;animation:marquee 38s linear infinite}
+  .marquee-track.marquee-reverse{animation-direction:reverse}
+  .marquee-row:hover .marquee-track{animation-play-state:paused}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .ref-tile{position:relative;overflow:hidden;cursor:pointer;border-radius:6px;flex-shrink:0;width:280px;height:280px;margin-right:14px}
+  .ref-img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92) contrast(1.05);transition:transform .5s cubic-bezier(.2,.8,.2,1),filter .4s}
+  .ref-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55));opacity:0;transition:opacity .3s}
+  .ref-tile::before{content:"⤢";position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:rgba(237,232,224,.92);color:var(--dark);display:flex;align-items:center;justify-content:center;font-size:.85rem;opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .3s;z-index:2}
+  .ref-tile:hover .ref-img{transform:scale(1.08)}
+  .ref-tile:hover::after,.ref-tile:hover::before{opacity:1;transform:translateY(0)}
+
+  /* LIGHTBOX */
+  .lightbox{position:fixed;inset:0;background:rgba(10,8,6,.94);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .25s}
+  .lightbox.open{opacity:1;visibility:visible}
+  .lightbox-stage{position:relative;display:flex;align-items:center;justify-content:center;flex:1;width:100%;touch-action:pan-y}
+  .lightbox-stage img{max-width:88vw;max-height:72vh;object-fit:contain;border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.5);opacity:0;transform:scale(.97);transition:opacity .25s ease,transform .25s ease}
+  .lightbox-stage img.show{opacity:1;transform:scale(1)}
+  .lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;background:rgba(237,232,224,.1);border:1px solid rgba(237,232,224,.25);color:var(--bg);border-radius:50%;width:46px;height:46px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.3rem;transition:background .2s;z-index:3}
+  .lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:rgba(237,232,224,.22)}
+  .lightbox-close{top:24px;right:24px}
+  .lightbox-prev{left:24px;top:50%;transform:translateY(-50%)}
+  .lightbox-next{right:24px;top:50%;transform:translateY(-50%)}
+  .lightbox-count{color:#b8a890;font-size:.82rem;letter-spacing:.08em;margin:14px 0 4px}
+  .lightbox-thumbs{display:flex;gap:8px;padding:0 24px 24px;max-width:90vw;overflow-x:auto}
+  .lightbox-thumbs img{width:64px;height:48px;object-fit:cover;border-radius:3px;cursor:pointer;opacity:.45;flex-shrink:0;transition:opacity .2s,outline .2s;outline:2px solid transparent}
+  .lightbox-thumbs img:hover{opacity:.8}
+  .lightbox-thumbs img.active{opacity:1;outline-color:#c8884a}
+
+  /* GYIK */
+  .faq{background:var(--bg2)}
+  .faq-list{display:flex;flex-direction:column;max-width:760px}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-item:first-child{border-top:1px solid var(--line)}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;font-size:1.02rem;color:var(--txt-d);font-weight:600;font-family:inherit}
+  .faq-q .ico{width:18px;height:18px;flex-shrink:0;position:relative}
+  .faq-q .ico::before,.faq-q .ico::after{content:"";position:absolute;background:var(--txt-d);top:50%;left:50%;transform:translate(-50%,-50%)}
+  .faq-q .ico::before{width:12px;height:1.5px}
+  .faq-q .ico::after{width:1.5px;height:12px;transition:transform .2s}
+  .faq-item.open .faq-q .ico::after{transform:translate(-50%,-50%) rotate(90deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s}
+  .faq-a-inner{padding:0 0 22px;color:var(--m1);font-size:.95rem;max-width:600px}
+  .faq-item.open .faq-a{max-height:400px}
+
+  /* KAPCSOLAT */
+  .contact{background:var(--bg3)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:56px}
+  .step{padding:24px;background:var(--bg);border:1px solid var(--line);border-radius:10px}
+  .step-num{font-size:1.6rem;font-weight:700;color:var(--accent);margin-bottom:10px;line-height:1}
+  .step h3{font-size:1.05rem;margin-bottom:6px;font-weight:600}
+  .step p{color:var(--m1);font-size:.88rem}
+  .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:32px;align-items:stretch}
+  .contact-info{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 28px;display:flex;flex-direction:column;justify-content:center;height:100%}
+  .ch{display:flex;gap:22px;align-items:center;padding:26px 0;border-top:1px solid var(--line)}
+  .ch:first-child{border-top:none}
+  .ch-ico{width:52px;height:52px;border-radius:50%;background:rgba(138,90,50,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent)}
+  .ch-ico svg{width:23px;height:23px}
+  .ch-label{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;color:var(--m2);margin-bottom:4px;font-weight:600}
+  .ch a,.ch span{color:var(--txt-d);text-decoration:none;font-size:1.3rem;font-weight:700}
+  .ch a:hover{color:var(--accent)}
+  form{background:var(--bg);padding:32px;border-radius:10px;border:1px solid var(--line);height:100%;display:flex;flex-direction:column}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--m2);margin-bottom:6px;font-weight:600}
+  .field input,.field textarea,.field select{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line2);padding:9px 0;color:var(--txt-d);font-family:inherit;font-size:.96rem}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent)}
+  .field textarea{resize:vertical;min-height:80px}
+  .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%238a5a32' stroke-width='1.5'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .5rem center;padding-right:24px}
+  form option{background:var(--bg);color:var(--txt-d)}
+  .submit{width:100%;padding:15px;background:var(--accent);color:var(--bg);border:none;font-weight:700;font-size:.95rem;cursor:pointer;border-radius:6px;margin-top:auto;font-family:inherit}
+  .submit:hover{background:#a06a3c}
+  .form-note{font-size:.78rem;color:var(--m2);margin-top:12px;text-align:center}
+
+  /* FOOTER */
+  footer{background:#15110c;color:#9a8b78;padding:32px 6%;font-size:.85rem}
+  .footer-grid{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  footer a{color:#9a8b78;text-decoration:none}
+  footer a:hover{color:#c8884a}
+
+  @media(max-width:960px){
+    .hero{grid-template-columns:1fr}
+    .hero-img{height:280px;order:-1}
+    .hero-img::after{top:auto;right:0;left:0;bottom:-1px;width:auto;height:90px;background:linear-gradient(180deg,transparent,var(--bg))}
+    .hero-text{padding:48px 6% 56px}
+    .nav-center{display:none}
+    .menu-btn{display:flex}
+    .nav-cta{display:none}
+    .cta-strip-inner{justify-content:center;text-align:center}
+    .cta-strip-actions{width:100%;justify-content:center}
+    section.block{padding:64px 6%}
+    .services-grid,.steps{grid-template-columns:1fr}
+    .trust{justify-content:flex-start}
+    .trust-item{padding:6px 16px}
+    .trust-item::after{display:none}
+    .ref-tile{width:200px;height:200px}
+    .lightbox-prev,.lightbox-next{width:38px;height:38px;font-size:1.1rem}
+    .lightbox-prev{left:10px}
+    .lightbox-next{right:10px}
+    .contact-grid{grid-template-columns:1fr;gap:36px}
+    .about-grid{flex-direction:column;gap:36px}
+    .about-photo-wrap{width:100%;min-height:auto}
+    .about-frame{top:14px;left:14px;right:-14px;bottom:-14px}
+    .nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--bg);padding:24px 6%;border-bottom:1px solid var(--line);gap:18px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Nyári Károly<span> | Kőműves szakember</span></a>
+  <div class="nav-center">
+    <ul class="nav-links">
+      <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+      <li><a href="#rolam">Rólam</a></li>
+      <li><a href="#referenciak">Referenciák</a></li>
+      <li><a href="#gyik">GYIK</a></li>
+    </ul>
+    <div class="loc">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-7.5-8-13a8 8 0 0 1 16 0c0 5.5-8 13-8 13z"/><circle cx="12" cy="9" r="3"/></svg>
+      Győr + 50 km
+    </div>
+  </div>
+  <a href="#kapcsolat" class="nav-cta">Árajánlat</a>
+  <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-text">
+    <div class="label">Egyéni vállalkozó · Győr</div>
+    <h1>Szilárd alapok, tiszta munka, határidőre.</h1>
+    <p class="lead">Családi házak, melléképületek és felújítások kivitelezése Győr-Moson-Sopron megyében. Minden téglát úgy rakok le, mintha a sajátomba épülne.</p>
+    <div class="cta-group">
+      <a href="#kapcsolat" class="btn btn-primary">Ingyenes felmérés</a>
+      <a href="tel:+36209435065" class="btn btn-secondary">+36 20 943 5065</a>
+    </div>
+    <div class="last-job">
+      <strong>Több mint 10 év szakmai tapasztalat</strong>
+      Családi házak, felújítások és melléképületek kivitelezése Győr és környékén.
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trust-item">
+    <strong>10+ év</strong>
+    <span>szakmai tapasztalat</span>
+  </div>
+  <div class="trust-item">
+    <strong>140+</strong>
+    <span>befejezett munka</span>
+  </div>
+  <div class="trust-item">
+    <strong>5 év</strong>
+    <span>írásos garancia</span>
+  </div>
+  <div class="trust-item">
+    <strong>Győr + 50 km</strong>
+    <span>munkaterület</span>
+  </div>
+</div>
+
+<!-- SZOLGÁLTATÁSOK -->
+<section class="block" id="szolgaltatasok">
+  <div class="container">
+    <div class="head" style="text-align:center;margin-left:auto;margin-right:auto;max-width:900px">
+      <h2>Szolgáltatások és tájékoztató árak</h2>
+      <p>Konkrét helyszín, méret és anyagválasztás után pontos, fix árajánlatot készítek. Az alábbi árak indikatív kiindulópontok.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service">
+        <div class="service-img-wrap">
+          <img class="service-img" src="images/1000033871.webp" alt="Új építés — alapozás és falazás">
+          <div class="service-num">01</div>
+        </div>
+        <div class="service-body">
+          <h3>Új építés</h3>
+          <p>Családi házak és melléképületek teljes szerkezetépítése alapozástól tetőszerkezetig.</p>
+          <ul>
+            <li>Sávalap, lemezalap</li>
+            <li>Falazás (tégla, Ytong, betonzsalu)</li>
+            <li>Födém készítés</li>
+            <li>Koszorú, áthidalók</li>
+          </ul>
+        </div>
+      </div>
+      <div class="service">
+        <div class="service-img-wrap">
+          <img class="service-img" src="images/1000013102.webp" alt="Felújítás — vakolt belső helyiség">
+          <div class="service-num">02</div>
+        </div>
+        <div class="service-body">
+          <h3>Felújítás</h3>
+          <p>Régi családi házak modernizálása szerkezeti megerősítéssel és energetikai szempontok mentén.</p>
+          <ul>
+            <li>Vakolatjavítás</li>
+            <li>Nyílászárócsere körüli munkák</li>
+            <li>Belső átépítés, falbontás</li>
+            <li>Vizesblokk felújítás</li>
+          </ul>
+        </div>
+      </div>
+      <div class="service">
+        <div class="service-img-wrap">
+          <img class="service-img" src="images/1000019265.webp" alt="Burkolás és szigetelés — járólapozás">
+          <div class="service-num">03</div>
+        </div>
+        <div class="service-body">
+          <h3>Burkolás &amp; szigetelés</h3>
+          <p>Hőszigetelés, homlokzati vakolat és belső burkolatok kivitelezése egy kézből.</p>
+          <ul>
+            <li>Homlokzati hőszigetelés</li>
+            <li>Színes vakolat</li>
+            <li>Csempézés, járólapozás</li>
+            <li>Talajnedvesség elleni szigetelés</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA CSÍK -->
+<div class="cta-strip">
+  <div class="cta-strip-inner">
+    <a href="tel:+36209435065" class="btn-call">
+      <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+      <span>
+        <span class="call-label">Hívjon most</span>
+        <span class="call-number">+36 20 943 5065</span>
+      </span>
+    </a>
+  </div>
+</div>
+
+<!-- RÓLAM -->
+<section class="block about" id="rolam">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content">
+        <div class="label">Kőműves · Győr</div>
+        <h2>Azt építem, amit másnak ígérek.</h2>
+        <p>Nyári Károlynak hívnak, kőműves szakmunkás végzettséggel dolgozom önállóan Győrben és környékén. Családi házak szerkezetépítésétől a felújításokig, melléképületekig minden olyan munkát elvállalok, amihez szilárd, megbízható kéz kell.</p>
+        <p>Kis csapattal dolgozom, így minden helyszínen személyesen ott vagyok az alapozástól az átadásig — nem alvállalkozók végzik a munkát, hanem én és a megbízható embereim. Minden megrendelőm engem hív, ha kérdése van.</p>
+        <p>Nem vagyok a legolcsóbb, de azt vállalom amit ígérek: határidőben, írásos szerződéssel és garanciával.</p>
+        <div class="about-stats">
+          <div><strong>10+ év</strong><span>szakmai tapasztalat</span></div>
+          <div><strong>140+</strong><span>befejezett munka</span></div>
+        </div>
+      </div>
+      <div class="about-photo-wrap">
+        <div class="about-frame"></div>
+        <div class="about-photo" style="background-image:url('images/1000021573.webp')"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCIÁK -->
+<section class="block refs" id="referenciak">
+  <div class="container">
+    <div class="head">
+      <h2>Befejezett munkák</h2>
+    </div>
+  </div>
+  <div class="marquee-bleed">
+  <div class="marquee-row">
+    <div class="marquee-track">
+      <div class="ref-tile" onclick="openLightbox(0)"><img class="ref-img" src="images/1000033871.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(1)"><img class="ref-img" src="images/1000033874.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(2)"><img class="ref-img" src="images/1000013102.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(3)"><img class="ref-img" src="images/1000035469.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(0)"><img class="ref-img" src="images/1000033871.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(1)"><img class="ref-img" src="images/1000033874.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(2)"><img class="ref-img" src="images/1000013102.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(3)"><img class="ref-img" src="images/1000035469.webp" alt="Befejezett munka"></div>
+    </div>
+  </div>
+  <div class="marquee-row">
+    <div class="marquee-track marquee-reverse">
+      <div class="ref-tile" onclick="openLightbox(4)"><img class="ref-img" src="images/1000021573.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(5)"><img class="ref-img" src="images/1000023143.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(6)"><img class="ref-img" src="images/1000019265.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(7)"><img class="ref-img" src="images/1000034397.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(4)"><img class="ref-img" src="images/1000021573.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(5)"><img class="ref-img" src="images/1000023143.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(6)"><img class="ref-img" src="images/1000019265.webp" alt="Befejezett munka"></div>
+      <div class="ref-tile" onclick="openLightbox(7)"><img class="ref-img" src="images/1000034397.webp" alt="Befejezett munka"></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-stage">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-prev" onclick="navLightbox(-1)">‹</button>
+    <img id="lightbox-img" src="" alt="Befejezett munka — nagyított nézet">
+    <button class="lightbox-next" onclick="navLightbox(1)">›</button>
+  </div>
+  <div class="lightbox-count" id="lightbox-count"></div>
+  <div class="lightbox-thumbs" id="lightbox-thumbs"></div>
+</div>
+
+<!-- GYIK -->
+<section class="block faq" id="gyik">
+  <div class="container">
+    <div class="head" style="text-align:center;margin-left:auto;margin-right:auto">
+      <h2>Gyakori kérdések</h2>
+      <p>A leggyakoribb kérdésekre összegyűjtöttem az őszinte választ. Ha nem találod amit keresel, hívj telefonon — gyorsabban válaszolok mint emailben.</p>
+    </div>
+      <div class="faq-list" style="margin-left:auto;margin-right:auto">
+        <div class="faq-item open">
+          <button class="faq-q">Mennyibe kerül a kiszállás és felmérés?<span class="ico"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Győr 50 km-es körzetében a helyszíni felmérés és árajánlatkérés teljesen ingyenes. Megnézem a helyszínt, átbeszéljük az igényeket, és 48 órán belül írásos árajánlatot küldök.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Mennyi időn belül tudunk kezdeni?<span class="ico"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Általában 4-8 hét az átfutási idő a szerződéskötéstől a kezdésig, de szezontól függ. Sürgős esetben (pl. káresemény után) egyeztetés alapján gyorsabban is be tudok ugrani.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Adsz írásos garanciát a munkára?<span class="ico"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Minden megrendelésre 5 év írásos garanciát adok a szerkezeti munkára, 2 évet a burkolásra. Ha valami nem stimmel, visszajövök és javítom — extra költség nélkül.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Fix árat adsz vagy óradíjasan dolgozol?<span class="ico"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Fix árat adok a felmérés után. Az árajánlatban tételesen lebontva szerepel az anyag és a munkadíj, így nincsenek meglepetések. Pluszmunka csak írásos egyeztetés után kerül a számlába.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Anyagot is beszerzel vagy nekem kell?<span class="ico"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Mindkettő működik. A legtöbb megrendelőm az anyagbeszerzést is rám bízza, mert kedvezményes árakat kapok a helyi telepeken. De ha te magad szeretnéd venni, az is rendben van.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Milyen távolságon belül vállalsz munkát?<span class="ico"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Győr 50 km-es körzetében dolgozom — Pannonhalma, Csorna, Mosonmagyaróvár, Pápa vonal. Nagyobb projekteknél (több hetes-hónapos munkák) ennél messzebbre is elmegyek.</div></div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- KAPCSOLAT -->
+<section class="block contact" id="kapcsolat">
+  <div class="container">
+    <div class="head">
+      <h2>Kérj ingyenes árajánlatot.</h2>
+      <p>Három lépés a kivitelezésig — semmi kötelezettség, semmi titkolózás.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Hívj vagy írj</h3>
+        <p>Telefon, email vagy űrlap — válassz ami kényelmes.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Helyszíni felmérés</h3>
+        <p>Kimegyek, megnézem, átbeszéljük az igényeket. Ingyenes, kötelezettség nélkül.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Írásos árajánlat</h3>
+        <p>48 órán belül megkapod tételes lebontásban. Fix ár, fix határidő.</p>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="ch">
+          <div class="ch-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="ch-label">Telefon</div><a href="tel:+36209435065">+36 20 943 5065</a></div>
+        </div>
+        <div class="ch">
+          <div class="ch-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="ch-label">Email</div><a href="mailto:karolynyari2000@gmail.com">karolynyari2000@gmail.com</a></div>
+        </div>
+        <div class="ch">
+          <div class="ch-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-7.5-8-13a8 8 0 0 1 16 0c0 5.5-8 13-8 13z"/><circle cx="12" cy="9" r="3"/></svg></div>
+          <div><div class="ch-label">Munkaterület</div><span>Győr + 50 km</span></div>
+        </div>
+      </div>
+      <form onsubmit="event.preventDefault();alert('Köszönöm! Hamarosan jelentkezem.');this.reset()">
+        <div class="field"><label>Név</label><input type="text" required></div>
+        <div class="field"><label>Telefon</label><input type="tel" required></div>
+        <div class="field"><label>Munka típusa</label>
+          <select required>
+            <option value="">Válassz...</option>
+            <option>Új építés</option>
+            <option>Felújítás</option>
+            <option>Burkolás / szigetelés</option>
+            <option>Egyéb / nem tudom</option>
+          </select>
+        </div>
+        <div class="field"><label>Helyszín (település)</label><input type="text" required></div>
+        <div class="field"><label>Néhány szó a munkáról</label><textarea placeholder="pl. 100 m² családi ház szerkezetépítése, alapok már megvannak..."></textarea></div>
+        <button type="submit" class="submit">Árajánlatot kérek</button>
+        <p class="form-note">48 órán belül jelentkezem · Adataidat nem osztom meg senkivel</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>© 2026 Nyári Károly EV</div>
+    <div><a href="#">Vissza az elejére ↑</a></div>
+  </div>
+</footer>
+
+<a href="tel:+36209435065" class="call-fab" aria-label="Hívás most">
+  <span class="fab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+  +36 20 943 5065
+</a>
+
+<script>
+// Mobile menu
+const mb=document.getElementById('menuBtn'),nl=document.querySelector('.nav-links');
+mb?.addEventListener('click',()=>nl.classList.toggle('open'));
+nl?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(b=>b.addEventListener('click',()=>{
+  const item=b.parentElement;
+  document.querySelectorAll('.faq-item').forEach(i=>i!==item&&i.classList.remove('open'));
+  item.classList.toggle('open');
+}));
+
+// Lightbox
+const refImages=[...document.querySelectorAll('.ref-img')].map(img=>img.src);
+const lightbox=document.getElementById('lightbox'),lbImg=document.getElementById('lightbox-img'),lbCount=document.getElementById('lightbox-count'),lbThumbs=document.getElementById('lightbox-thumbs'),lbStage=document.querySelector('.lightbox-stage');
+let lbIndex=0;
+
+lbThumbs.innerHTML=refImages.map((src,i)=>`<img src="${src}" onclick="event.stopPropagation();openLightbox(${i})">`).join('');
+const thumbEls=[...lbThumbs.querySelectorAll('img')];
+
+function openLightbox(i){lbIndex=i;renderLightbox(false);lightbox.classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){lightbox.classList.remove('open');document.body.style.overflow='';}
+function navLightbox(dir){lbIndex=(lbIndex+dir+refImages.length)%refImages.length;renderLightbox(true);}
+function renderLightbox(animate){
+  if(animate){
+    lbImg.classList.remove('show');
+    setTimeout(()=>{lbImg.src=refImages[lbIndex];lbImg.classList.add('show');},150);
+  }else{
+    lbImg.src=refImages[lbIndex];
+    requestAnimationFrame(()=>lbImg.classList.add('show'));
+  }
+  lbCount.textContent=(lbIndex+1)+' / '+refImages.length;
+  thumbEls.forEach((t,i)=>t.classList.toggle('active',i===lbIndex));
+  thumbEls[lbIndex]?.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+}
+lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
+document.addEventListener('keydown',e=>{
+  if(!lightbox.classList.contains('open'))return;
+  if(e.key==='Escape')closeLightbox();
+  if(e.key==='ArrowRight')navLightbox(1);
+  if(e.key==='ArrowLeft')navLightbox(-1);
+});
+
+// Swipe nav (touch)
+let touchStartX=0;
+lbStage.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;},{passive:true});
+lbStage.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].screenX-touchStartX;
+  if(Math.abs(dx)>40)navLightbox(dx<0?1:-1);
+},{passive:true});
+
+</script>
+
+</body>
+</html>
