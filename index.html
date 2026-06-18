@@ -184,7 +184,7 @@
   .ch-ico svg{width:23px;height:23px}
   .ch>div{min-width:0}
   .ch-label{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;color:var(--m2);margin-bottom:4px;font-weight:600}
-  .ch a,.ch span{color:var(--txt-d);text-decoration:none;font-size:1.3rem;font-weight:700;word-break:break-word;overflow-wrap:anywhere}
+  .ch a,.ch span{color:var(--txt-d);text-decoration:none;font-size:1.3rem;font-weight:700;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis}
   .ch a:hover{color:var(--accent)}
   form{background:var(--bg);padding:32px;border-radius:10px;border:1px solid var(--line);height:100%;display:flex;flex-direction:column}
   .field{margin-bottom:18px}
@@ -245,7 +245,15 @@
     .trust-item::after{display:none}
     .ref-tile{width:160px;height:160px}
     .step{padding:18px}
-    .ch a,.ch span{font-size:1.05rem;white-space:nowrap}
+    .ch{gap:14px}
+    .ch-ico{width:44px;height:44px}
+    .ch-ico svg{width:19px;height:19px}
+    .ch a,.ch span{font-size:.95rem;white-space:nowrap}
+    .contact-info{padding:8px 18px}
+  }
+
+  @media(max-width:380px){
+    .ch a,.ch span{font-size:.82rem}
   }
 </style>
 </head>
